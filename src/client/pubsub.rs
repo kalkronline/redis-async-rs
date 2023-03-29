@@ -481,12 +481,12 @@ impl Stream for PubsubStream {
     }
 }
 
-impl Drop for PubsubStream {
-    fn drop(&mut self) {
-        let topic: &str = self.topic.as_ref();
-        self.con.unsubscribe(topic);
-    }
-}
+// impl Drop for PubsubStream {
+//     fn drop(&mut self) {
+//         let topic: &str = self.topic.as_ref();
+//         self.con.unsubscribe(topic);
+//     }
+// }
 
 #[cfg(test)]
 mod test {
