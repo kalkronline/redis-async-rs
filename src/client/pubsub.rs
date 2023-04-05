@@ -204,9 +204,10 @@ impl PubsubConnectionInner {
                         )));
                     }
                 }
-                if self.subscriptions.is_empty() {
-                    return Ok(false);
-                }
+                // kill the connection on zero subs :cringe:
+                // if self.subscriptions.is_empty() {
+                //     return Ok(false);
+                // }
             }
             b"punsubscribe" => {
                 match self.psubscriptions.entry(topic) {
@@ -220,9 +221,10 @@ impl PubsubConnectionInner {
                         )));
                     }
                 }
-                if self.psubscriptions.is_empty() {
-                    return Ok(false);
-                }
+                // kill the connection on zero subs :cringe:
+                // if self.psubscriptions.is_empty() {
+                //     return Ok(false);
+                // }
             }
             b"message" => match self.subscriptions.get(&topic) {
                 Some(sender) => {
